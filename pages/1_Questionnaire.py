@@ -139,10 +139,15 @@ survey.radio("Q15: There is a right way to present a case or do a task, and I ex
 # scores = survey.data
 # print(scores["Q1"])
 
-st.button("Calculate scores", on_click=calculate_score(survey.data))
-if st.session_state.clicked:
-    sc = st.session_state.scores
-    # st.write(sc)
+if st.button("Calculate scores"):
+    calculate_score(survey.data)
     display_avatar()
     display_radar_chart()
-    st.session_state.clicked = False
+
+# st.button("Calculate scores", on_click=calculate_score(survey.data))
+# if st.session_state.clicked:
+#     sc = st.session_state.scores
+#     # st.write(sc)
+#     display_avatar()
+#     display_radar_chart()
+#     st.session_state.clicked = False

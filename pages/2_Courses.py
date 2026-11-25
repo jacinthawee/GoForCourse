@@ -2,11 +2,13 @@ import streamlit as st
 
 st.set_page_config(page_title="Courses", page_icon="🧑‍🏫")
 st.markdown("# Courses")
+if "avatar" not in st.session_state:
+    st.session_state.avatar = False
 
 personalised, all_courses = st.tabs(["For You", "All Courses"])
 
-if st.session_state.avatar:
-    with personalised:
+with personalised:
+    if st.session_state.avatar:
         c1 = st.container()
         c2 = st.container()
         c3 = st.container()
@@ -27,6 +29,11 @@ if st.session_state.avatar:
                 c1.write("""GMS601: Matching Autonomy to Learner Readiness — Use graduated responsibility and entrustment principles.  \n06:20""")
                 c2.write("""GMS602: Supervision Without Micromanagement — Balance learner independence with appropriate clinical oversight.  \n04:57""")
                 c3.write("""GMS603: Closing the Feedback Loop — Use brief check-ins, direct observation and timely feedback.  \n05:24""")
+    else:
+        c = st.container()
+        c.write("Find out your teaching style before getting curated courses!")
+        st.page_link("pages/1_Questionnaire.py", label="Go To Questionnaire", icon="🖋️")
+
 
 with all_courses:
     st.image("photos/course_matrix.jpg")
